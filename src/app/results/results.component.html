@@ -1,0 +1,30 @@
+@if (!results){
+<p class="center">Please enter some values and press "Calculate"</p>
+<!--* class="centre"  centers the div -->
+} @else {
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Investment Value</th>
+      <th>Interest (Year)</th>
+      <th>Total Interest</th>
+      <th>Total Capital</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    @for (result of results; track result.year) {
+    <tr>
+      <td>{{ result.year }}</td>
+      <td>{{ result.valueEndOfYear | currency: "EUR" }}</td>
+      <!--* currency: "EUR" pipe -> ts import Currency Pipe -> css pt curency -->
+      <td>{{ result.interest | currency: "EUR" }}</td>
+      <td>{{ result.totalInterest | currency: "EUR" }}</td>
+      <td>{{ result.totalAmountInvested | currency: "EUR" }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+
+}
